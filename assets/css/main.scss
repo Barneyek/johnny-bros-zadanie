@@ -1,0 +1,677 @@
+//====================================
+// Global Imports
+//====================================
+// 1- Import bootstrap framework
+@import '1-frameworks/index';
+
+// 2 - Import plugins
+@import '2-plugins/index';
+
+// 3 - Import base style, custom variables and mixins
+@import '3-base/index';
+
+// 4 - Import modules
+@import '4-modules/index';
+
+// 5 - Import layout  styles
+@import '5-layout/index';
+
+//====================================
+// Style
+//====================================
+@font-face {
+   font-family: 'Millunium';
+   src: url('../fonts/Millunium%20Regular/Millunium-Medium.woff');
+}
+
+@font-face {
+   font-family: 'Millunium-Bold';
+   src: url('../fonts/Millunium%20Bold/Millunium-Bold.ttf');
+}
+
+* {
+   box-sizing: border-box;
+}
+
+html {
+   height: 100% !important;
+}
+
+body {
+   margin: 0;
+   background-color: #FFF;
+   text-rendering: optimizeLegibility !important;
+   -webkit-font-smoothing: antialiased !important;
+   font-size: 15px;
+   font-family: Raleway;
+   position: relative;
+   width: 100%;
+   height: 100%;
+   line-height: 19px;
+   padding: 0;
+}
+
+a {
+   text-decoration: none !important;
+   color: #333;
+   line-height: 1.6;
+   font-weight: 400;
+   cursor: pointer;
+   &:active {
+      outline: 0;
+      color: #32C1CE;
+   }
+   &:before {
+      outline: 0;
+      color: #32C1CE;
+   }
+}
+
+p {
+   font-family: Raleway;
+   font-size: $mp-size;
+   line-height: $mlp-height;
+}
+
+h1,
+h2,
+h3 {
+   font-family: Millunium;
+}
+
+h1 {
+   @include fontAndline($mh1-size,
+   $ml1-height);
+}
+
+h2 {
+   @include fontAndline($mh2-size,
+   $ml2-height);
+}
+
+h3 {
+   @include fontAndline($mh3-size,
+   $ml3-height);
+   letter-spacing: 0.4px;
+   color: $dark-text;
+}
+
+h4 {
+   margin: 0;
+   text-transform: uppercase;
+   letter-spacing: 2px;
+   font-weight: 700;
+   font-family: Raleway;
+   @include fontAndline($mh4-size,
+   $ml4-height);
+}
+
+h5 {
+   @include fontAndline($mh5-size,
+   $ml5-height);
+   font-weight: 700;
+   font-family: Raleway;
+   color: $dark-text;
+}
+
+.btn-green {
+   background-color: $light-green;
+   border-radius: 2px;
+   color: #fff;
+   font-family: Raleway;
+   font-weight: 600;
+   border: none;
+   padding: 12px 70px;
+   @include fontAndline($mbutton-size,
+   $mlbutton-height);
+   cursor: pointer;
+   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+#head {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background-color: transparent;
+   box-sizing: border-box;
+   z-index: 9998;
+   .logo-container {
+      height: 50px;
+      line-height: 50px;
+      color: #fff;
+      float: left;
+   }
+   nav {
+      float: right;
+      background-color: transparent;
+      z-index: 2;
+      padding: 15px 0;
+      ul {
+         margin: 0;
+         padding: 0;
+         display: flex;
+         text-align: left;
+         li {
+            list-style: none;
+            a {
+               height: 50px;
+               line-height: 50px;
+               padding: 0 20px;
+               color: #fff;
+               text-decoration: none;
+               text-transform: uppercase;
+               display: block;
+               font-family: Raleway;
+               font-size: 14px;
+               font-weight: 600;
+               letter-spacing: 1px;
+            }
+         }
+      }
+   }
+}
+
+.hamburger {
+   z-index: 9999;
+   display: none;
+   width: 20px;
+   height: 3px;
+   background: #fff;
+   position: absolute;
+   cursor: pointer;
+   right: 5%;
+   top: 50%;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+   transition: 1.0s;
+   &:before {
+      top: -7px;
+   }
+   &:after {
+      top: 7px;
+   }
+}
+
+.hamburger:before,
+.hamburger:after {
+   content: '';
+   width: 20px;
+   height: 3px;
+   background: #fff;
+   position: absolute;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+   transition: 0.5s;
+
+}
+
+.icon.anime .hamburger {
+   cursor: pointer;
+   background: transparent;
+   transition: 0.3s;
+   box-shadow: none;
+   &:before {
+      width: 15px;
+      top: 0;
+      transform: rotate(45deg);
+   }
+   &:after {
+      top: 0;
+      width: 15px;
+      transform: rotate(135deg);
+   }
+}
+
+
+#wrapper {
+   max-width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   width: 100%;
+}
+
+.box-tournament {
+   padding: 5.625em 0 0 0;
+}
+
+.text-center {
+   text-align: center;
+}
+
+body.overly {
+   transition: 1.5s;
+}
+
+body.overly:before {
+   content: 'before';
+   background-color: rgba(0, 0, 0, 0.55);
+   -webkit-transition: 0.5s;
+   transition: 0.5s;
+   position: absolute;
+   height: 250%;
+   width: 100%;
+   animation: overly 1.0s;
+   z-index: 999;
+}
+
+@keyframes overly {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+.tournament-header {
+   width: 100%;
+   height: 500px;
+   background-image: url(../img/pp-main-background.jpg);
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   color: #fff;
+   h1 {
+      margin: 0;
+   }
+   h4 {
+      padding-bottom: 10px;
+   }
+   p {
+      margin: 20px 0;
+   }
+   .chevron {
+      padding: 25px 0;
+      .fas {
+         cursor: pointer;
+         padding: 10px 10px 9px 10px;
+         border-radius: 100px;
+         border: 2px solid $chevron-grey;
+         color: $chevron-grey;
+         &:hover {
+            color: #fff;
+            border-color: #fff;
+         }
+      }
+   }
+}
+
+.tournament-info {
+   background-color: $grey-bg;
+   padding-top: 30px;
+   .statisics-info {
+      border-radius: 3px;
+      background-color: #fff;
+      margin: 20px 5px -10px 5px;
+      padding: 0 20px;
+      z-index: 20;
+      position: relative;
+      h4 {
+         padding-top: 30px;
+         color: $h4-grey;
+      }
+      h3 {
+         padding: 10px 0px;
+         margin: 0;
+      }
+
+      .btn-green {
+         margin: 10px 0 35px 0;
+      }
+   }
+   .statistic-img-box {
+      line-height: 0;
+      img {
+         max-width: 100%;
+         height: auto;
+      }
+   }
+   .statisics {
+      background-color: $light-green;
+      color: #fff;
+      text-align: center;
+      padding-bottom: 30px;
+      h4 {
+         padding-top: 30px;
+      }
+      .statistic-item {
+         padding-top: 15px;
+         span {
+            font-size: 42px;
+            line-height: 36px;
+            font-weight: 500;
+            font-family: Millunium;
+            padding-bottom: 10px;
+         }
+         p {
+            margin: 10px 0;
+            font-weight: 600;
+         }
+      }
+   }
+}
+
+.tournament-reward {
+   padding: 200px 0 50px 0;
+   h4 {
+      color: $h4-grey;
+   }
+   h3 {
+      margin: 10px 0 40px 0;
+   }
+   .reward-item {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+      align-items: center;
+      span {
+         font-family: Millunium;
+         font-size: 42px;
+         line-height: 36px;
+         color: $rewards-numbers;
+         letter-spacing: 2px;
+         font-weight: 600;
+         padding-bottom: 30px;
+         cursor: pointer;
+         &:hover {
+            color: $light-green;
+         }
+      }
+      img {
+         position: relative;
+         width: 85px;
+         height: 85px;
+         background-position: 50% 50%;
+         background-repeat: no-repeat;
+         background-size: cover;
+      }
+   }
+}
+
+//====================================
+// PHONE
+//====================================
+@media (max-width: 767px) {
+
+   #head {
+      .active-toggle {
+         transition-duration: 1.2s;
+         transform: translateX(calc(55% - 170px));
+      }
+      nav {
+         @include navbar();
+         ul {
+            padding: 80px 15px;
+            display: block;
+            li a {
+               text-transform: none;
+               font-weight: 500;
+               font-size: 16px;
+               line-height: 20px;
+               height: 38px;
+            }
+         }
+      }
+   }
+   .crop {
+      overflow: hidden;
+      img {
+         position: absolute;
+         margin-top: 8px;
+         clip: rect(0px, 35px, 200px, 0px);
+      }
+   }
+
+   .hamburger {
+      display: block;
+   }
+
+   .active:before {
+      @include lineMenu();
+      left: -20px;
+      margin-top: 8px;
+      animation: show-up 0.3s forwards;
+   }
+
+   @keyframes show-up {
+      0% {
+         width: 0px;
+      }
+      100% {
+         width: 40px;
+      }
+   }
+   .box-tournament {}
+   .no-margin {
+      margin: 0 auto;
+      padding: 0;
+   }
+   .fd {
+      max-width: 100%;
+   }
+   .tournament-info {
+      h4 {
+         padding-bottom: 10px;
+      }
+      .statisics .statistic-item {
+         padding-top: 25px;
+      }
+   }
+
+   .statistic-item {
+      br {
+         display: none;
+      }
+   }
+   .tournament-reward {
+      padding-top: 40px;
+   }
+}
+
+//====================================
+// TABLET
+//====================================
+@media (min-width: 768px) and (max-width: 1024px) {
+   #head {
+      padding: 20px 0;
+      .active-toggle {
+         transition-duration: 1.8s;
+         transform: translateX(calc(50% - 150px));
+      }
+      .logo-container {
+         padding: 10px 0;
+      }
+      nav {
+         @include navbar();
+         ul {
+            padding: 150px 40px;
+            display: block;
+            li a {
+               text-transform: none;
+               font-weight: 500;
+               font-size: 24px;
+               line-height: 32px;
+               margin: 10px 0;
+            }
+         }
+      }
+   }
+
+   .hamburger {
+      display: block;
+   }
+
+   .active:before {
+      @include lineMenu();
+      left: -30px;
+      margin-top: 15px;
+      animation: show-up 0.3s forwards;
+   }
+   @keyframes show-up {
+      0% {
+         width: 0px;
+      }
+      100% {
+         width: 60px;
+      }
+   }
+   .tournament-header {
+      height: 600px;
+      .box-tournament {
+         padding: 9.0em 0 0 0;
+         h1 {
+            @include fontAndline($h2-size,
+            $l2-height);
+         }
+         p {
+            margin: 20px 50px;
+         }
+         button {
+            margin-top: 30px;
+         }
+      }
+   }
+   .tournament-info {
+      text-align: left;
+      .statisics {
+         position: absolute;
+         top: 50%;
+         padding: 80px 0px;
+         left: 50%;
+         width: 50%;
+         transform: translate(125%, -95%);
+      }
+      .statistic-img-box {
+         margin: 10px 0 -90px 0;
+      }
+   }
+   .container {
+      max-width: 100%;
+      .col-md-5 {
+         flex: 0 0 95%;
+         max-width: 70%;
+         .statisics-info {
+            padding: 22px 41px;
+            margin-left: 0px;
+            .text-center {
+               text-align: left;
+            }
+         }
+      }
+   }
+   .img-move {
+      max-width: 100%;
+      height: auto;
+      margin: -10px 0px 0 120px;
+   }
+   .tournament-reward {
+      padding-top: 150px;
+   }
+}
+
+//====================================
+// DESKTOP
+//====================================
+@media (min-width: 1025px) {
+   h1 {
+      @include fontAndline($h1-size,
+      $l1-height);
+      letter-spacing: 1.5px;
+   }
+   h2 {
+      @include fontAndline($h2-size,
+      $l2-height);
+   }
+   h3 {
+      @include fontAndline($h3-size,
+      $l3-height);
+   }
+   h4 {
+      @include fontAndline($h4-size,
+      $l4-height);
+   }
+   p {
+      @include fontAndline($p-size,
+      $lp-height);
+   }
+   button {
+      @include fontAndline($button-size,
+      $lbutton-height);
+   }
+
+   .btn-green {
+      margin-top: 5px;
+      padding: 14px 90px;
+   }
+   .logo-container {
+      padding: 13px 0;
+   }
+   .tournament-header {
+      height: 700px;
+      .box-tournament {
+         padding: 14.0em 0 0 0;
+         p {
+            font-weight: 400;
+            margin: 25px 240px 50px 240px;
+         }
+         .chevron {
+            padding-top: 60px;
+         }
+      }
+   }
+
+   .tournament-info {
+      position: relative;
+      .statisics {
+         text-align: center;
+         padding: 90px 0px 30px 0px;
+         z-index: 5;
+         position: relative;
+         right: 65%;
+         width: 75%;
+         h4 {
+            padding: 30px;
+         }
+         .statistic-flex {
+            display: flex;
+            justify-content: center;
+            .statistic-item {
+               padding: 0 15px;
+            }
+         }
+      }
+      .statisics-info {
+         position: relative;
+         padding: 40px;
+         z-index: 98;
+         margin: 50px -135px 0px 0px;
+         .text-center {
+            text-align: left;
+         }
+      }
+      .statistic-img-box {
+         margin: 150px 0 -150px 0;
+      }
+   }
+   .tournament-reward {
+      h3 {
+         padding: 0 25%;
+      }
+   }
+}
+
+//====================================
+// Another
+//====================================
+@media (min-width: 1200px) {
+   .tournament-info .statisics {
+      margin: -60px 0;
+      padding: 0px 0px 30px 0px;
+
+   }
+   .tournament-reward {
+      h3 {
+         padding: 0 35%;
+      }
+   }
+}

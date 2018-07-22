@@ -1,0 +1,22 @@
+/* Custom Mixins -------------------- */
+@mixin lineMenu(){
+      content: '';
+      background-color: #3fae49;
+      border: 0;
+      height: 3px;
+      position: absolute;
+   }
+@mixin navbar(){
+       transition-duration: 1.2s;
+         height: 100%;
+         width: 120%;
+         left: 0;
+         top: 0;
+         position: fixed;
+         transform: translate(1050px, 0);
+      background-color: $dark-blue;
+}
+@mixin fontAndline($font-size, $line-height){
+   font-size: $font-size;
+   line-height: $line-height;
+}
